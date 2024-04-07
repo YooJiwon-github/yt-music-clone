@@ -5,7 +5,11 @@ const page = async () => {
   await sleep(4000);
 
   return (
-    <div>Home Page</div>
+    <div className='min-h-[600px]'>
+      <div className='h-[500px] bg-neutral-700'>
+        Home Page
+      </div>
+    </div>
   )
 }
 

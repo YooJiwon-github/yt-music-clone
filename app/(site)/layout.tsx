@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 
 const layout = ({children}:{ children: React.ReactNode }) => {
   return (
-    <div>
+    <div className='w-full h-full'>
       <Header>
         {children}
       </Header>
