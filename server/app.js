@@ -1,10 +1,12 @@
-import { dummyAllSongList, getSongsBychannel, dummyPlaylistArray, getAllPlaylist, getPlaylistByOwner, getPlaylistById, getSongListTop10, dummyChannelList, getChannelById, homeCategoryList, dymmyGenreList } from '../lib/dummyData'
-
-const express = require('express');
-const bodyParser = require('body-parser');
+import { dummyAllSongList, getSongsBychannel, dummyPlaylistArray, getAllPlaylist, getPlaylistByOwner, getPlaylistById, getSongListTop10, dummyChannelList, getChannelById, homeCategoryList, dymmyGenreList } from '../lib/dummyData.js'
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
-const port = 3000;
+app.use(cors());
+
+const port = 8080;
 
 app.use(bodyParser.json());
 
