@@ -10,7 +10,7 @@ const HeaderBgChanger = ({ imageSrc }) => {
     }, [imageSrc]);
 
   return (
-    <div>HeaderBgChanger</div>
+    <div></div>
   )
 }
 
