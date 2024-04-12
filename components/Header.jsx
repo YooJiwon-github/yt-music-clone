@@ -46,20 +46,28 @@ const Header = ({children}) => {
   
   const { headerImageSrc } = useUIState();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const headRef = useRef();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollValue = headRef?.current?.scrollTop;
-      console.log(">scrollVal: ", scrollValue);
       setIsScrolled(scrollValue !== 0);
+      // 스크롤 위치를 업데이트합니다.
+      setScrollY(window.scrollY);
     };
+
+    const debouncedHandleScroll = debounce(handleScroll, 200); // 디바운싱 적용
+    window.addEventListener('scroll', debouncedHandleScroll);
 
     headRef?.current?.addEventListener("scroll", handleScroll);
     return () => {
       headRef?.current?.removeEventListener("scroll", handleScroll);
+
+      // 컴포넌트가 언마운트되면 이벤트 리스너를 제거합니다.
+      window.removeEventListener('scroll', debouncedHandleScroll);
     };
-  }, []);
+  }, []); // useEffect의 두 번째 매개변수로 빈 배열을 전달하여 한 번만 실행되도록 설정합니다.
 
   return (
     <header ref={headRef} className="relative overflow-y-auto w-full h-full">
@@ -114,5 +122,19 @@ const Header = ({children}) => {
     </header>
   )
 }
+
+// 디바운싱 함수
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      timeout = null;
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 
 export default Header

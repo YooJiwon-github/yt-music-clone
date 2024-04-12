@@ -32,7 +32,7 @@
     "**/*.tsx",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "components/GenreCard.jsx"  ],
   "exclude": [
     "node_modules"
   ]

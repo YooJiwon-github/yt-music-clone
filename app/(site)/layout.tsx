@@ -8,7 +8,7 @@ const layout = ({children}:{ children: React.ReactNode }) => {
         {children}
       </Header>
     </div>
-  )
-}
+  );
+};
 
 export default layout
